@@ -1,0 +1,1304 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "descriptuon": "sample server",
+        "version": "1.0.0",
+        "title": "Assignment Test",
+        "contact": {
+            "email": "arun.ang.js@gmail.com"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Upload Files",
+            "description": "Upload Files"
+        },
+        {
+            "name": "Agent",
+            "description": "Agent apis"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/csv": {
+            "post": {
+                "tags": ["Upload Files"],
+                "summary": "Create an Upload Files data",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "consumes": ["multipart/form-data"],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "Unable to create the Feed !!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "default": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "Successfully created the Feed !!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Upload Files"],
+                "summary": "Create an Upload Files data",
+                "parameters": [
+                    {
+                        "name": "deletedStatus",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "Unable to delete the data !!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "default": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "Successfully deleted all the data !! \" or \" Succeddfully get all the data"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ,
+        "/agent": {
+            "post": {
+                "tags": ["Agent"],
+                "Summary": "Create a Agent data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createAgent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new agent !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new agent !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Agent"],
+                "Summary": "Get a agent data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the agent list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/agent/{id}": {
+            "put": {
+                "tags": ["Agent"],
+                "Summary": "Update a Agent data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createAgent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the agent !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the Agent !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Agent"],
+                "Summary": "Delete a Agent data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid Agent id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a Agent !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/carrier": {
+            "post": {
+                "tags": ["Carrier"],
+                "Summary": "Create a carrier data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/carrier"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new carrier !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new carrier !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Carrier"],
+                "Summary": "Get a carrier data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the carrier list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/carrier/{id}": {
+            "put": {
+                "tags": ["Carrier"],
+                "Summary": "Update a Carrier data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/carrier"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the carrier !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the Carrier !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Carrier"],
+                "Summary": "Delete a Carrier data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid Carrier id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a Currier !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lob": {
+            "post": {
+                "tags": ["Lob"],
+                "Summary": "Create a lob data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/lob"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new lob !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new lob !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Lob"],
+                "Summary": "Get a lob data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the lob list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lob/{id}": {
+            "put": {
+                "tags": ["Lob"],
+                "Summary": "Update a lob data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/lob"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the lob !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the lob !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Lob"],
+                "Summary": "Delete a lob data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid lob id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a Lob !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/policy": {
+            "post": {
+                "tags": ["Policy"],
+                "Summary": "Create a policy data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/policy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new policy !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new policy !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Policy"],
+                "Summary": "Get a policy data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the policy list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/policy/{id}": {
+            "put": {
+                "tags": ["Policy"],
+                "Summary": "Update a policy data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/policy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the policy !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the policy !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Policy"],
+                "Summary": "Delete a policy data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid policy id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a policy !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "tags": ["User"],
+                "Summary": "Create a user data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new user !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new user !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User"],
+                "Summary": "Get a user data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the user list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "put": {
+                "tags": ["User"],
+                "Summary": "Update a user data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the user !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the policy !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["User"],
+                "Summary": "Delete a policy data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid policy id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a policy !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user-account": {
+            "post": {
+                "tags": ["User Account"],
+                "Summary": "Create a user account data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to create a new user account !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Created a new user account !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User Account"],
+                "Summary": "Get a user account data",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully get the user account list !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user-account/{id}": {
+            "put": {
+                "tags": ["User Account"],
+                "Summary": "Update a user data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Unable to update the user account!!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully update the User account !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["User Account"],
+                "Summary": "Delete a user account data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Error Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "0"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Invalid user account id !!"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success Message",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "integer",
+                                    "default": "1"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "default": "Successfully delete a User account !!"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "createAgent": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "number"
+                }
+            }
+        },
+        "carrier": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "rating": {
+                    "type": "number"
+                }
+            }
+        },
+        "lob": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "annualRevenue": {
+                    "type": "number"
+                }
+            }
+        },
+        "policy": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "string"
+                },
+                "carrierId": {
+                    "type": "string"
+                },
+                "lobId": {
+                    "type": "string"
+                },
+                "policyNumber": {
+                    "type": "string"
+                },
+                "startDate": {
+                    "type": "string"
+                },
+                "endDate": {
+                    "type": "string"
+                }
+            }
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAccount": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "string"
+                },
+                "accountNumber": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "string"
+                }
+            }
+        }        
+    }
+}
